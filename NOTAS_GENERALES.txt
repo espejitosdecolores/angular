@@ -1,0 +1,25 @@
+# Rutas en angular 16
+
+# Importar los componentes a rutear, y en el app.routes.ts agregar las Rutas
+
+# Comodin: { path: '**', component: PageNotFoundComponent } podemos mostrar cualquier componente en la ruta comodin
+
+#redireccion
+    { path: 'otro',   redirectTo: '/first-ruta', pathMatch: 'full' },
+
+# Rutas hijas tambien en app.routes.ts
+  {path:'ruta-padre',component:PadreComponent,
+        children: [ 
+            {path:'hija', component:HijoComponent},
+            {path:'hija2', component:Hija2Component}
+        ]
+    },
+
+# titles a las rutas, se pone en el objeto de la ruta: 
+    {path:'ruta',title:'un titulo de esta pagina', component:ElComponenteChe}
+
+# LazyLoad en standAlone components (version 16), solo poner esto en el objeto de la ruta
+    {path: 'second-ruta', loadComponent: () => import('./second/second.component').then(m => m.SecondComponent)}
+    No es carga peresoza de modulos sino de componentes
+
+
